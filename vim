@@ -13,8 +13,6 @@ _vim() {
 
   $split && return
 
-  _expand || return
-
   case $cur in
     "scp://"*"/" | "scp://"*"/"*)
       # build scp like remote string
@@ -59,7 +57,9 @@ _vim() {
       ;;
     *)
       [[ $cur != scp: ]] && COMPREPLY=($(compgen -W 'scp://' -- "$cur"))
-      _xfunc ssh _scp_local_files
+      _tilde "$cur" || return
+      compopt -o filenames
+      COMPREPLY+=($(compgen -d -- "$cur"))
       ;;
   esac
 } &&
