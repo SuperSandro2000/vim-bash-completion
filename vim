@@ -59,7 +59,7 @@ _vim() {
       [[ $cur != scp: ]] && COMPREPLY=($(compgen -W 'scp://' -- "$cur"))
       _tilde "$cur" || return
       compopt -o filenames
-      COMPREPLY+=($(compgen -d -- "$cur"))
+      COMPREPLY+=($(compgen -f -- "$cur") $(compgen -d -- "$cur"))
       ;;
   esac
 } &&
