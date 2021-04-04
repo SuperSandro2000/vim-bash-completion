@@ -12,25 +12,25 @@ The following features are curently supported:
 - vim scp:// completion
   - configure your ssh_config so that you can connect to your hosts by name without any options and ideally without a password prompt everytime
     - using key based authentication with ssh-agent or passwordless keyfiles is preferred
-```ssh_config
-Host machine
-  Hostname 10.0.0.1
-  User account
-  IdentityFile ~/.ssh/id_ed25519
-  PubkeyAuthentication yes
-```
+    ```ssh_config
+    Host machine
+      Hostname 10.0.0.1
+      User account
+      IdentityFile ~/.ssh/id_ed25519
+      PubkeyAuthentication yes
+    ```
   - if the completion should be fast you want to enable control sockets
-```ssh_config
-Host *
-  ControlMaster auto
-  ControlPath ~/.ssh/sockets/%C
-  ControlPersist 15m
-```
+  ```ssh_config
+  Host *
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%C
+    ControlPersist 15m
+  ```
   - remove ``:`` from COMP_WORDBREAKS which can be done by adding the following line to your bashrc
     - this is required because ``vim scp://machine//home/user/.bashrc`` does not use the same format as ``{rsync,scp} machine:/home/user/.bashrc`` does but the completion files by bash-completion are re-used
-```bash
-export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
-```
+    ```bash
+    export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
+    ```
 - clone the repo this repository into some directory ``git clone https://github.com/SuperSandro2000/vim-bash-completion.git ~/.bash_completion.d/vim-bash-completion``
 - load the completion file
   - on demand: either symlink (preferred) or copy the vim file into the follwoing directory
