@@ -26,6 +26,7 @@ The following features are curently supported:
     ControlPath ~/.ssh/sockets/%C
     ControlPersist 15m
   ```
+    - The directory is not created automatically and can be done with ``mkdir -p ~/.ssh/sockets/``.
   - remove ``:`` from COMP_WORDBREAKS which can be done by adding the following line to your bashrc
     - this is required because ``vim scp://machine//home/user/.bashrc`` does not use the same format as ``{rsync,scp} machine:/home/user/.bashrc`` does but the completion files by bash-completion are re-used
     ```bash
