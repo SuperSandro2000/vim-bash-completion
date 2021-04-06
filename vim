@@ -63,4 +63,4 @@ _vim() {
       ;;
   esac
 } &&
-  complete -F _vim -o nospace vim
+  complete -F _vim -o nospace vim nvim
